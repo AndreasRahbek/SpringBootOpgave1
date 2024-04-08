@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+</head>
+<body>
+<h1>Result</h1>
+<p th:text="'Navn: ' + ${bruger.navn}" />
+<p th:text ="'Email: ' + ${bruger.email}" />
+<h2>Brugerliste</h2>
+<p th:if="${not #lists.isEmpty(brugerliste)}">Brugere:</p>
+<ul>
+    <li th:each="bruger : ${brugerliste}">
+        <p th:text="'Navn: ' + ${bruger.navn}" />
+        <p th:text="'Email: ' + ${bruger.email}" />
+    </li>
+</ul>
+<form action="#" th:action="@{/result}" th:object="${brugerliste}" method="post">
+    <p><input type="submit" value="Udskriv"/></p>
+</form>
+</body>
+</html>
